@@ -1,0 +1,55 @@
+$card-height: 500px; 
+$transition-setting: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+
+// 💡 我們將圖片的最大顯示寬度設為變數，這也是當卡片完全展開時的寬度
+$img-width: 600px; 
+
+.accordion-container {
+  display: flex;
+  flex-direction: row;
+  width: 95%;          // 💡 螢幕放大時，容器寬度跟著按比例放大
+  max-width: 1200px;   // 💡 設定一個在大螢幕上的最大上限
+  height: $card-height;
+  margin: 2rem auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+  .card {
+    position: relative; // 💡 設為相對定位，作為裡面圖片的「伸縮滑門」
+    flex: 1; 
+    height: 100%;
+    overflow: hidden;   // 💡 超出滑門範圍的圖片自動隱藏
+    min-width: 100px;   // 💡 沒被 hover 的卡片最小寬度
+    transition: flex #{$transition-setting};
+
+    img {
+      position: absolute; // 💡 關鍵：圖片絕對定位，脫離 flex 擠壓的流向
+      top: 0;
+      left: 50%;          // 💡 配合下方的 transform，讓圖片永遠鎖死在卡片的正中間
+      transform: translateX(-50%); 
+      
+      // 💡 關鍵設定：圖片必須是「固定寬度」
+      // 這樣無論外層的 .card 怎麼變寬變窄，圖片都絕對不會被拉伸變形！
+      width: $img-width;  
+      height: 100%;
+      object-fit: cover;
+      
+      // 💡 這裡放你之前微調完美的貓臉對焦（如果有需要微調的話）
+      // 因為圖片寬度固定了，所以 object-position 會非常穩定！
+    }
+
+    // 🎯 滑門展開
+    &:hover {
+      flex: 3; // 💡 展開比例，可以依據喜好調整 3 ~ 4 
+      
+      // 💡 注意：這裡 img 裡面「完全不寫」transform: scale 或任何寬度改變！
+      // 這樣圖片本身就不會產生任何放大或跑圖特效，單純只有外框展開！
+    }
+  }
+}
+
+// 🎯 針對不同貓咪精準對刀（維持你剛剛調好的完美視覺重心）
+.card-cat-1 img { object-position: left 20%; }
+.card-cat-2 img { object-position: 25% 30%; }
+.card-cat-3 img { object-position: right 30%; }

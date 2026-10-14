@@ -1,0 +1,14 @@
+.img-box{
+    width:150px;
+    height:auto;
+    overflow:hidden;
+    transition:width 0.5s ease;
+
+    img{
+        width:auto;
+    }
+
+    &:hover{
+        width:auto;
+    }
+}

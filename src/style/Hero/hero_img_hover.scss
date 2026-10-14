@@ -1,0 +1,39 @@
+@keyframes card-spin-fade{
+    from{
+        transform:rotate(0deg) scale(0);
+        transform-origin: center;
+        opacity:0;
+    }
+    to{
+        transform:rotate(360deg) scale(1);
+        transform-origin: center;
+        opacity:1;
+    }
+}
+
+
+.gallery-container {
+  display: flex; 
+  gap: 40px;
+
+  .card-1, .card-2, .card-3 {
+    opacity: 0;
+    pointer-events: none; 
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  @for $i from 1 through 3 {
+    &:has(.hover-card-#{$i}:hover) {
+      .card-#{$i} {
+        opacity: 1;
+        pointer-events: auto;
+        animation: card-spin-fade 0.5s ease-out forwards;
+      }
+      .card-f{
+        opacity:0;
+        transform:rotate(360deg);
+        transform-origin: center;
+      }
+    }
+  }
+}

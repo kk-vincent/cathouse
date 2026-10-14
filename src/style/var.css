@@ -1,0 +1,32 @@
+:root{
+    --color-background:#f5f0e8;
+    --color-background-hero:#fee0b1;
+    --color-background-hero-linear:linear-gradient(to bottom, #fee0b1, #f5f0e8);
+
+    --color-caption-text:#6B705C;
+    --color-border:#8A4B38;
+    --color-text:#000000;
+
+    --h1-font-size:40px;
+    --nav-font-size:32px;
+
+    --hero-h1-font-size:64px;
+    --hero-h2-font-size:24px;
+
+
+    --pic-shadow-x:10px;
+    --pic-shadow-y:10px;
+
+    --nav-font:Regualr;
+
+    --section-opacity-st:0px;
+    --section-opacity-end:100px;
+
+    --translate-r-x:80px;
+    --translate-l-x:-80px;
+
+    --translate-b-y:10px;
+
+
+}
+
